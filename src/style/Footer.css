@@ -1,0 +1,74 @@
+/* Full-width gradient footer */
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #1a1a2e, #162447, #1f4068);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer inner container */
+.footer .container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Paragraph styling */
+.footer p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Small text styling */
+.footer small {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.footer small span {
+  color: #e25555; /* heart color */
+  font-size: 1rem;
+  margin: 0 3px;
+  animation: heartbeat 1.5s infinite;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  .footer small {
+    font-size: 0.75rem;
+  }
+}

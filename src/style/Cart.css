@@ -1,0 +1,207 @@
+/* Full-screen gradient background for cart page */
+.cart-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e, #162447, #1f4068);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  padding: 50px;
+  padding-top: 100px;
+}
+
+/* Cart heading */
+.cart-container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.cart-table-cart {
+  width: 100%; 
+  margin: 0 auto;
+  
+  /*max-width: 300px;*/
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-collapse: separate !important;
+  border-spacing: 0;
+  margin-bottom: 30px; /* spacing between multiple tables */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Hover effect */
+.cart-table-cart:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+.cart-table-cart th,
+.cart-table-cart td {
+  text-align: start;
+  padding: 15px;
+  color: #f0f0f0 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  vertical-align: middle;
+
+}
+
+/* Remove default Bootstrap table backgrounds */
+.table > :not(caption) > * > * {
+  background-color: transparent !important;
+}
+
+/* Table rows hover effect */
+.cart-table-cart tbody tr {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.cart-table-cart tbody tr:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+/* Product image */
+.cart-table-cart img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Quantity buttons */
+.quantity-btn {
+  padding: 5px 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Increase button */
+.btn-increase {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-increase:hover {
+  background-color: #3ddc5f;
+}
+
+/* Decrease button */
+.btn-decrease {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-decrease:hover {
+  background-color: #e95c6a;
+}
+
+/* Remove button */
+.btn-remove {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-remove:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: #0dcaf0;
+  transform: translateY(-2px);
+}
+
+/* Total and Checkout button */
+.cart-total {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Common Glass-style Buttons */
+.cart-container .btn,
+.quantity-btn,
+.btn-remove,
+.btn-checkout {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cart-container .btn:hover,
+.quantity-btn:hover,
+.btn-remove:hover,
+.btn-checkout:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: #0dcaf0;
+  transform: translateY(-2px);
+}
+
+/* Quantity buttons specific padding */
+.quantity-btn {
+  padding: 5px 12px;
+}
+
+/* Checkout button larger */
+.btn-checkout {
+  padding: 10px 25px;
+  font-weight: 600;
+}
+
+/* Remove old individual colors */
+.btn-increase,
+.btn-decrease {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+.btn-increase:hover,
+.btn-decrease:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  color: #0dcaf0 !important;
+}
+
+/* Empty cart text */
+.cart-empty {
+  font-size: 1.2rem;
+  color: #d0d0d0;
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .cart-table-cart {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-table-cart {
+    width: 100%;
+  }
+}

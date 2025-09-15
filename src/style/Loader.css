@@ -1,0 +1,42 @@
+/* src/components/Loader.css */
+
+/* Full-screen overlay */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 26, 46, 0.85); /* matches home gradient overlay */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: all 0.3s ease;
+}
+
+/* Loader Spinner */
+.loader-spinner {
+  width: 4rem;
+  height: 4rem;
+  border-width: 0.4rem;
+  color: #0dcaf0; /* matches accent color of website */
+  animation: spin 1s linear infinite;
+}
+
+/* Smooth spinning animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Optional: loader text */
+.loader-overlay span {
+  margin-top: 10px;
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}

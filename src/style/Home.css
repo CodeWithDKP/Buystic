@@ -1,0 +1,145 @@
+/* Full-screen gradient background */
+.home-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #162447, #1f4068);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero-section {
+
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+    padding: 80px 30px;
+    margin-top: 50px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    margin-top: 150px;
+}
+
+.hero-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #d0d0d0;
+}
+
+/* Hero Button */
+.btn-hero {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background: rgba(255, 255, 255, 0.35);
+    color: #0dcaf0;
+    transform: translateY(-3px);
+}
+
+/* Features Section */
+.features-section {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 30px 20px;
+    color: #f0f0f0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.feature-card h5 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #dcdcdc;
+}
+
+/* Responsive adjustments */
+/* 📱 Extra small mobile view */
+@media (max-width: 576px) {
+  /* Hero section compact */
+  .hero-section {
+    margin-top: 100px;
+    padding: 30px 15px;
+    border-radius: 12px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-text {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-hero {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+  }
+
+  /* Features section spacing */
+  .features-section {
+    margin-top: 30px;
+  }
+
+  .feature-card {
+    padding: 20px 15px;
+    font-size: 0.9rem;
+  }
+
+  .feature-card h5 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .feature-card p {
+    font-size: 0.85rem;
+  }
+}
