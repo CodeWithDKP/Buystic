@@ -1,12 +1,59 @@
-# React + Vite
+# Buystic
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> ⚠️ **Note:**  
+> 1. Currently, there are **no products on the Products page** by default. You need to login to the **Admin Dashboard** to manage products (add, approve, edit, delete) and see everything.  
+> 2. There is **no backend yet**. In the future, a backend will be added to handle data dynamically.
 
-Currently, two official plugins are available:
+Buystic is a modern, responsive e-commerce web application built with React. It provides a seamless shopping experience for users and a simple admin panel for product management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### User
+- Browse products on Home & Products pages
+- Add products to Cart
+- Checkout with calculated subtotal, taxes, shipping, discount, and total
+- View past Orders
+- Login & Profile management
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Admin
+- Admin login to access product management
+- Approve or remove products
+- Edit product prices
+- Delete products
+
+### UI/UX
+- Responsive design for mobile, tablet, and desktop
+- Glassmorphic navbar with dynamic cart badge
+- Smooth loader animation during data fetch
+- Modern and clean interface
+
+## Technologies Used
+- React
+- React Router
+- Bootstrap 5
+- CSS (Glassmorphism, Responsive Design)
+- LocalStorage for state persistence
+
+## Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/CodeWithDKP/Buystic.git
+Install dependencies:
+
+bash
+Copy code
+npm install
+Run the app locally:
+
+bash
+Copy code
+npm start
+Usage
+Navigate between pages using the navbar
+
+Add products to cart, checkout, and view orders
+
+Admins can login to manage products
+
+Demo
+Live Demo on https://buystic.vercel.app/
