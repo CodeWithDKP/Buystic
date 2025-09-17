@@ -1,7 +1,8 @@
 // src/pages/Admin.jsx
-import "../style/Admin.css";
+
 import { useState, useEffect } from "react";
 import { getProducts } from "../service/api";
+import '../style/Loader.css';
 
 function Admin() {
   const [allProducts, setAllProducts] = useState([]);
@@ -119,7 +120,7 @@ function Admin() {
                       {isApproved ? "Remove" : "Approve"}
                     </button>
                     <button
-                      className="btn btn-outline-danger btn-sm"
+                      className="btn btn-outline-danger btn-sm delete"
                       onClick={() => handleDelete(product.id)}
                     >
                       Delete
