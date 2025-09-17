@@ -217,12 +217,22 @@
 
     .cart-table td {
         padding: 12px 8px;
+        
+    }
+    .cart-container{
+        margin-right: 25px;
+    }
+    .order-details-card{
+        margin-right: 30px;
     }
 }
 
 @media (max-width: 768px) {
     .cart-container {
         padding: 30px 15px;
+    }
+     .cart-container{
+        margin-right: 25px;
     }
 
     .orders-list {
@@ -242,5 +252,8 @@
     .btn-checkout {
         width: 100%;
         text-align: center;
+    }
+    .order-details-card{
+        margin-right: 25px;
     }
 }

@@ -1,5 +1,3 @@
-// src/components/ProductCard.jsx
-//import "./ProductCard.css";
 
 function ProductCard({ product, footerContent }) {
   return (

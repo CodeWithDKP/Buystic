@@ -1,5 +1,5 @@
 // src/pages/Cart.jsx
-import "../style/Cart.css";
+
 import { useNavigate } from "react-router-dom";
 
 function Cart({ isLoggedIn, cart, setCart, subtotal, taxes, shipping, discount, totalPrice }) {

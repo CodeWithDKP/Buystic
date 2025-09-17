@@ -10,52 +10,83 @@ function Checkout({ cart, subtotal, taxes, shipping, discount, totalPrice, setCa
     phone: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [successMsg, setSuccessMsg] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("COD");
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // clear error on change
+  };
+
+  const validateForm = () => {
+    let tempErrors = {};
+    if (!form.name) tempErrors.name = "Full Name is required";
+    if (!form.address) tempErrors.address = "Address is required";
+    if (!form.city) tempErrors.city = "City is required";
+    if (!form.zip) tempErrors.zip = "Zip code is required";
+    if (!form.phone) tempErrors.phone = "Phone number is required";
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
   };
 
   const handlePlaceOrder = () => {
     if (cart.length === 0) {
+      setSuccessMsg("");
       alert("Your cart is empty!");
       return;
     }
-    const { name, address, city, zip, phone } = form;
-    if (!name || !address || !city || !zip || !phone) {
-      alert("Please fill all shipping details before placing the order!");
-      return;
-    }
+
+    if (!validateForm()) return;
+
     const newOrder = {
-      id: "ORD" + Math.floor(Math.random() * 100000),
-      date: new Date().toISOString().split("T")[0], // YYYY-MM-DD
+      id: "ORD" + Date.now(), // unique order ID
+      date: new Date().toISOString().split("T")[0],
       total: totalPrice,
       items: [...cart],
       status: "Pending",
       shippingAddress: form,
+      paymentMethod,
     };
+
     setOrders((prev) => [...prev, newOrder]);
     setCart([]);
-
-    alert("✅ Order placed successfully!");
+    setForm({ name: "", address: "", city: "", zip: "", phone: "" });
+    setSuccessMsg(" Order placed successfully!");
   };
 
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
+
       <section>
         <h4>Shipping Address</h4>
         <form>
-          <input type="text" name="name" placeholder="Full Name" value={form.name} onChange={handleChange} />
-          <input type="text" name="address" placeholder="Address" value={form.address} onChange={handleChange} />
-          <input type="text" name="city" placeholder="City" value={form.city} onChange={handleChange} />
-          <input type="text" name="zip" placeholder="Zip Code" value={form.zip} onChange={handleChange} />
-          <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} />
+          {["name","address","city","zip","phone"].map((field) => (
+            <div key={field} className="form-group">
+              <input
+                type={field === "phone" ? "tel" : "text"}
+                name={field}
+                placeholder={field === "name" ? "Full Name" : field.charAt(0).toUpperCase() + field.slice(1)}
+                value={form[field]}
+                onChange={handleChange}
+              />
+              {errors[field] && <small className="error-text">{errors[field]}</small>}
+            </div>
+          ))}
         </form>
       </section>
 
       <section>
         <h4>Payment Method</h4>
         <label>
-          <input type="radio" name="payment" defaultChecked /> Cash on Delivery
+          <input
+            type="radio"
+            name="payment"
+            checked={paymentMethod === "COD"}
+            onChange={() => setPaymentMethod("COD")}
+          />{" "}
+          Cash on Delivery
         </label>
         <label>
           <input type="radio" name="payment" disabled /> UPI / Card
@@ -68,7 +99,8 @@ function Checkout({ cart, subtotal, taxes, shipping, discount, totalPrice, setCa
         <ul>
           {cart.map((item) => (
             <li key={item.id}>
-              {item.title} × {item.quantity} = ₹{(item.price * item.quantity).toFixed(2)}
+              <span>{item.title} × {item.quantity}</span>
+              <span>₹{(item.price * item.quantity).toFixed(2)}</span>
             </li>
           ))}
         </ul>
@@ -82,6 +114,8 @@ function Checkout({ cart, subtotal, taxes, shipping, discount, totalPrice, setCa
       <button className="btn btn-success w-100" onClick={handlePlaceOrder}>
         Place Order
       </button>
+
+      {successMsg && <div className="toast-msg">{successMsg}</div>}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import "../style/Prodcuts.css";
+
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
