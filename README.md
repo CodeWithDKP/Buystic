@@ -39,14 +39,8 @@ Buystic is a modern, responsive e-commerce web application built with React. It 
 ```bash
 git clone https://github.com/CodeWithDKP/Buystic.git
 Install dependencies:
-
-bash
-Copy code
 npm install
 Run the app locally:
-
-bash
-Copy code
 npm start
 Usage
 Navigate between pages using the navbar
