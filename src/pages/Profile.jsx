@@ -1,21 +1,9 @@
 import profile from "../assets/profilepic.jpg";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/Profile.css";
 
-function Profile({ currentUser, cart }) {
-  const [orders, setOrders] = useState([]);
+function Profile({ currentUser, cart, orders }) {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (currentUser?.role === "user") {
-      const dummyOrders = [
-        { id: "ORD100", total: 999, status: "Delivered" },
-        { id: "ORD101", total: 499, status: "Shipped" },
-      ];
-      setOrders(dummyOrders);
-    }
-  }, [currentUser]);
 
   if (!currentUser)
     return <p style={{ textAlign: "center", marginTop: "50px" }}>Loading profile...</p>;
@@ -30,6 +18,7 @@ function Profile({ currentUser, cart }) {
           <p className="text">{currentUser.email || "No email"}</p>
         </div>
       </div>
+
       <div className="profile-card">
         <h5>Current Cart</h5>
         {cart.length === 0 ? (
@@ -64,7 +53,7 @@ function Profile({ currentUser, cart }) {
         )}
         <button
           className="btn btn-primary mt-3 w-100"
-          onClick={() => navigate("/Orders")}
+          onClick={() => navigate("/orders")}
         >
           View My Orders
         </button>

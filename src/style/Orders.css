@@ -213,7 +213,9 @@
 @media (max-width: 992px) {
     .cart-container h2 {
         font-size: 2rem;
+        
     }
+
 
     .cart-table td {
         padding: 12px 8px;
@@ -230,6 +232,7 @@
 @media (max-width: 768px) {
     .cart-container {
         padding: 30px 15px;
+        padding-top: 110px;
     }
      .cart-container{
         margin-right: 25px;

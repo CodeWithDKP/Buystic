@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({ products }) {
+  const collaborations = ["Amazon", "Flipkart", "Myntra", "Meesho", "Ajio", "Croma"];
+
+  // Pick 15 products (adjust logic later if needed)
+  const mostSold = products.slice(0, 15);
+  const trending = products.slice(-15);
+
   return (
     <div className="home-container">
       {/* Hero Section */}
@@ -14,26 +20,69 @@ function Home() {
         </Link>
       </section>
 
-      {/* Features Section */}
-      <section className="features-section container mt-5">
-        <div className="row">
-          <div className="col-md-4 mb-4">
-            <div className="feature-card">
-              <h5>Wide Range</h5>
-              <p>Find groceries, electronics, and more daily essentials.</p>
-            </div>
+      {/* Most Sold Products */}
+      <section className="scroll-section">
+        <h2 className="section-title">Most Sold Products</h2>
+        <div className="scroll-wrapper">
+          <div className="scroll-content">
+            {/* First set */}
+            {mostSold.map((product) => (
+              <div className="scroll-card" key={product.id}>
+                <img src={product.image} alt={product.title} className="product-img" />
+                <h6>{product.title.substring(0, 30)}...</h6>
+                <p>₹{product.price}</p>
+              </div>
+            ))}
+            {/* Duplicate set for infinite scroll */}
+            {mostSold.map((product, i) => (
+              <div className="scroll-card" key={`dup-sold-${i}`}>
+                <img src={product.image} alt={product.title} className="product-img" />
+                <h6>{product.title.substring(0, 30)}...</h6>
+                <p>₹{product.price}</p>
+              </div>
+            ))}
           </div>
-          <div className="col-md-4 mb-4">
-            <div className="feature-card">
-              <h5>Fast Delivery</h5>
-              <p>Get products delivered to your doorstep quickly.</p>
-            </div>
+        </div>
+      </section>
+
+      {/* Trending Products */}
+      <section className="scroll-section">
+        <h2 className="section-title">Trending Products</h2>
+        <div className="scroll-wrapper">
+          <div className="scroll-content reverse">
+            {/* First set */}
+            {trending.map((product) => (
+              <div className="scroll-card" key={product.id}>
+                <img src={product.image} alt={product.title} className="product-img" />
+                <h6>{product.title.substring(0, 30)}...</h6>
+                <p>₹{product.price}</p>
+              </div>
+            ))}
+            {/* Duplicate set for infinite scroll */}
+            {trending.map((product, i) => (
+              <div className="scroll-card" key={`dup-trend-${i}`}>
+                <img src={product.image} alt={product.title} className="product-img" />
+                <h6>{product.title.substring(0, 30)}...</h6>
+                <p>₹{product.price}</p>
+              </div>
+            ))}
           </div>
-          <div className="col-md-4 mb-4">
-            <div className="feature-card">
-              <h5>Secure Payments</h5>
-              <p>Safe and easy payment options for a smooth checkout.</p>
-            </div>
+        </div>
+      </section>
+
+      {/* Collaborations */}
+      <section className="collab-section">
+        <h2 className="section-title">Our Collaborations</h2>
+        <div className="collab-wrapper">
+          <div className="collab-content">
+            {/* First set */}
+            {collaborations.map((brand, i) => (
+              <span key={i} className="collab-name">{brand}</span>
+            ))}
+            {/* Duplicate set */}
+            {collaborations.map((brand, i) => (
+              <span key={`dup-collab-${i}`} className="collab-name">{brand}</span>
+            ))}
           </div>
         </div>
       </section>

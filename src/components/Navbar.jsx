@@ -19,8 +19,9 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
 
   const closeNavbar = () => {
     if (navRef.current?.classList.contains("show")) {
-      const bsCollapse = window.bootstrap.Collapse.getInstance(navRef.current) 
-        || new window.bootstrap.Collapse(navRef.current, { toggle: false });
+      const bsCollapse =
+        window.bootstrap.Collapse.getInstance(navRef.current) ||
+        new window.bootstrap.Collapse(navRef.current, { toggle: false });
       bsCollapse.hide();
     }
   };
@@ -40,7 +41,6 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          onClick={(e) => e.preventDefault()} 
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -48,21 +48,30 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
         <div className="collapse navbar-collapse" id="navbarNav" ref={navRef}>
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/" onClick={closeNavbar}>Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/products" onClick={closeNavbar}>Products</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cart" onClick={closeNavbar}>
-                MyCart {cartCount > 0 && <span className="badge-cart">{cartCount}</span>}
+              <Link className="nav-link" to="/" onClick={closeNavbar}>
+                Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/orders" onClick={closeNavbar}>Orders</Link>
+              <Link className="nav-link" to="/products" onClick={closeNavbar}>
+                Products
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin" onClick={closeNavbar}>Admin</Link>
+              <Link className="nav-link" to="/cart" onClick={closeNavbar}>
+                MyCart{" "}
+                {cartCount > 0 && <span className="badge-cart">{cartCount}</span>}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/orders" onClick={closeNavbar}>
+                Orders
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin" onClick={closeNavbar}>
+                Admin
+              </Link>
             </li>
           </ul>
 
@@ -70,15 +79,21 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
             {isLoggedIn ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/profile" onClick={closeNavbar}>Profile</Link>
+                  <Link className="nav-link" to="/profile" onClick={closeNavbar}>
+                    Profile
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn-login" onClick={handleLogout}>Logout</button>
+                  <button className="btn-login" onClick={handleLogout}>
+                    Logout
+                  </button>
                 </li>
               </>
             ) : (
               <li className="nav-item">
-                <Link className="btn-login" to="/login" onClick={closeNavbar}>Login</Link>
+                <Link className="btn-login" to="/login" onClick={closeNavbar}>
+                  Login
+                </Link>
               </li>
             )}
           </ul>

@@ -311,6 +311,148 @@ html, body {
     font-size: 1.1rem;
   }
 }
+/* =========================
+   🔄 SCROLL SECTIONS
+========================= */
+.scroll-section {
+  width: 100%;
+  margin-top: 60px;
+  text-align: center;
+  padding-left: 5%;   /* match container margins */
+  padding-right: 5%;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll-left 50s linear infinite;
+}
+
+.scroll-content.reverse {
+  animation: scroll-right 50s linear infinite;
+}
+
+.scroll-card {
+  min-width: 220px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+}
+
+.scroll-card:hover {
+  transform: translateY(-5px);
+}
+
+.scroll-card h6 {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.scroll-card p {
+  font-size: 0.9rem;
+  color: #0dcaf0;
+}
+
+.product-img {
+  max-height: 120px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Infinite loop animations */
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* =========================
+   🤝 COLLAB SECTION
+========================= */
+.collab-section {
+  margin: 60px 0;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 100%;
+  margin-top: 60px;
+  text-align: center;
+  padding-left: 5%;   /* match container margins */
+  padding-right: 5%;
+}
+
+.collab-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.collab-content {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll-left 50s linear infinite; /* slow on desktop */
+}
+
+.collab-name {
+  display: inline-block;
+  min-width: 160px;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  color: #0dcaf0;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.collab-name:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   📱 Mobile Adjustments
+========================= */
+@media (max-width: 768px) {
+  .scroll-section,
+  .collab-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .scroll-content {
+    animation-duration: 50s; /* faster */
+  }
+
+  .collab-content {
+    animation-duration: 50s; /* faster */
+  }
+}
+
+
 /* ===== Products Page CSS ===== */
 
 /* Full-screen gradient background */
@@ -818,6 +960,7 @@ html, body {
 @media (max-width: 768px) {
   .cart-container {
     padding: 15px;
+    
   }
 }
 

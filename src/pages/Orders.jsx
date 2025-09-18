@@ -40,7 +40,7 @@ function Orders({ orders }) {
         </div>
       )}
 
-      {/* Order Details Modal */}
+      {/* ✅ Order Details Modal */}
       {selectedOrder && (
         <div className="order-details-modal">
           <div className="order-details-card">
@@ -48,24 +48,39 @@ function Orders({ orders }) {
             <p>Date: {selectedOrder.date}</p>
             <p>Status: {selectedOrder.status}</p>
 
-            <h5>Items:</h5>
-            <ul>
-              {selectedOrder.items.map((item, i) => (
-                <li key={i}>
-                  {item.title} × {item.quantity} = ₹{(item.price * item.quantity).toFixed(2)}
-                </li>
-              ))}
-            </ul>
+            {selectedOrder.items && selectedOrder.items.length > 0 && (
+              <>
+                <h5>Items:</h5>
+                <ul>
+                  {selectedOrder.items.map((item, i) => (
+                    <li key={i}>
+                      {item.title} × {item.quantity} = ₹
+                      {(item.price * item.quantity).toFixed(2)}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
 
-            <h5>Shipping Address:</h5>
-            <p>{selectedOrder.shippingAddress.name}</p>
-            <p>{selectedOrder.shippingAddress.address}</p>
-            <p>{selectedOrder.shippingAddress.city} - {selectedOrder.shippingAddress.zip}</p>
-            <p>{selectedOrder.shippingAddress.phone}</p>
+            {selectedOrder.shippingAddress && (
+              <>
+                <h5>Shipping Address:</h5>
+                <p>{selectedOrder.shippingAddress.name}</p>
+                <p>{selectedOrder.shippingAddress.address}</p>
+                <p>
+                  {selectedOrder.shippingAddress.city} -{" "}
+                  {selectedOrder.shippingAddress.zip}
+                </p>
+                <p>{selectedOrder.shippingAddress.phone}</p>
+              </>
+            )}
 
             <h5>Total: ₹{selectedOrder.total}</h5>
 
-            <button className="btn btn-secondary mt-3" onClick={() => setSelectedOrder(null)}>
+            <button
+              className="btn btn-secondary mt-3"
+              onClick={() => setSelectedOrder(null)}
+            >
               Close
             </button>
           </div>
