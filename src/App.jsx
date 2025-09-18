@@ -45,10 +45,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Products" element={<Products cart={cart} setCart={setCart} />} />
+        <Route path="products" element={<Products cart={cart} setCart={setCart} />} />
 
         <Route
-          path="/Cart"
+          path="/cart"
           element={
             <Cart
               isLoggedIn={isLoggedIn}
@@ -62,13 +62,13 @@ function App() {
             />
           }
         />
-        <Route path="/Orders" element={
+        <Route path="/orders" element={
           <ProtectedRoute isLoggedIn={isLoggedIn}>
             <Orders orders={orders} />
           </ProtectedRoute>
         } />
         <Route
-          path="/Profile"
+          path="/profile"
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn && user?.role === "user"}>
               <Profile cart={cart} currentUser={user} />
@@ -79,7 +79,7 @@ function App() {
 
 
         <Route
-          path="/Orders"
+          path="/orders"
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn && user?.role === "user"}>
               <Orders orders={orders} />
@@ -89,7 +89,7 @@ function App() {
 
 
         <Route
-          path="/Admin"
+          path="/admin"
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn && user?.role === "admin"}>
               <Admin />
@@ -98,12 +98,12 @@ function App() {
         />
 
         <Route
-          path="/Login"
+          path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />}
         />
 
         <Route
-          path="/Checkout"
+          path="/checkout"
           element={
             <Checkout
               cart={cart}

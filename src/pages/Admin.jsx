@@ -10,13 +10,25 @@ function Admin() {
   const [editingId, setEditingId] = useState(null);
   const [newPrice, setNewPrice] = useState("");
 
-  // Load products + approved list
-  useEffect(() => {
-    getProducts().then((data) => setAllProducts(data));
-   
-    const stored = JSON.parse(localStorage.getItem("approvedProducts")) || [];
+ 
+ useEffect(() => {
+  getProducts().then((data) => {
+    setAllProducts(data);
+
+
+    let stored = JSON.parse(localStorage.getItem("approvedProducts"));
+
+    
+    if (!stored || stored.length === 0) {
+      localStorage.setItem("approvedProducts", JSON.stringify(data));
+      stored = data;
+    }
+
     setApproved(stored);
-  }, []);
+  });
+}, []);
+
+
 
   // Approve / Remove product
   const handleToggle = (product) => {
@@ -112,9 +124,8 @@ function Admin() {
                       </button>
                     )}
                     <button
-                      className={`btn btn-sm me-2 ${
-                        isApproved ? "btn-danger" : "btn-success"
-                      }`}
+                      className={`btn btn-sm me-2 ${isApproved ? "btn-danger" : "btn-success"
+                        }`}
                       onClick={() => handleToggle(product)}
                     >
                       {isApproved ? "Remove" : "Approve"}

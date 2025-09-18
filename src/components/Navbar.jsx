@@ -1,9 +1,9 @@
 // src/components/Navbar.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import '../App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "../App.css";
 
 function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
   const navigate = useNavigate();
@@ -14,12 +14,13 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     navigate("/");
-    closeNavbar(); // Close navbar on logout in mobile
+    closeNavbar();
   };
 
   const closeNavbar = () => {
-    if (navRef.current.classList.contains("show")) {
-      const bsCollapse = new window.bootstrap.Collapse(navRef.current, { toggle: false });
+    if (navRef.current?.classList.contains("show")) {
+      const bsCollapse = window.bootstrap.Collapse.getInstance(navRef.current) 
+        || new window.bootstrap.Collapse(navRef.current, { toggle: false });
       bsCollapse.hide();
     }
   };
@@ -27,7 +28,9 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
   return (
     <nav className="navbar-glass navbar navbar-expand-lg fixed-top">
       <div className="container">
-        <Link className="navbar-brand" to="/" onClick={closeNavbar}>Buystic</Link>
+        <Link className="navbar-brand" to="/" onClick={closeNavbar}>
+          Buystic
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -37,6 +40,7 @@ function Navbar({ cartCount, isLoggedIn, setIsLoggedIn }) {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={(e) => e.preventDefault()} 
         >
           <span className="navbar-toggler-icon"></span>
         </button>

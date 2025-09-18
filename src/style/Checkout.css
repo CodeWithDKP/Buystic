@@ -176,8 +176,105 @@
         padding-top: 100px; 
     }
 }
+/* Make cart table responsive */
+.cart-table-wrapper {
+  width: 100%;
+  overflow-x: auto;   /* allows horizontal scroll if needed */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+.cart-table-cart {
+  min-width: 600px; /* keeps columns aligned */
+}
+
 
 @media (max-width: 576px) {
     .checkout-container { padding: 30px 15px;
     padding-top: 100px; }
+}
+/* ===== Responsive adjustments for Checkout Page ===== */
+
+/* Tablet view */
+@media (max-width: 768px) {
+  .checkout-container {
+    padding: 20px 15px;
+    padding-top: 100px;
+  }
+
+  .checkout-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .checkout-container section {
+    padding: 18px 12px;
+    border-radius: 12px;
+  }
+
+  .checkout-container h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .checkout-container form input {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .checkout-container ul li {
+    font-size: 0.9rem;
+    padding: 6px 0;
+  }
+
+  .checkout-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .checkout-container .btn-success {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 576px) {
+  .checkout-container {
+    padding: 15px 12px;
+    padding-top: 80px;
+  }
+
+  .checkout-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .checkout-container section {
+    padding: 15px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .checkout-container h4 {
+    font-size: 1rem;
+  }
+
+  .checkout-container form input {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .checkout-container ul li {
+    font-size: 0.85rem;
+    padding: 5px 0;
+  }
+
+  .checkout-container h3 {
+    font-size: 1.1rem;
+  }
+
+  .checkout-container .btn-success {
+    font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 8px;
+  }
 }

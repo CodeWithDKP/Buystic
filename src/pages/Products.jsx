@@ -79,6 +79,7 @@ function Products({ cart, setCart }) {
 
       <h2>Products</h2>
       <div className="products-row">
+
         {filteredProducts.map((product) => (
           <div className="product-card" key={product.id}>
             <img src={product.image} alt={product.title} />

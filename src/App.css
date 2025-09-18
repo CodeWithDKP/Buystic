@@ -3,6 +3,20 @@
 ========================= */
 
 /* Glassmorphic Navbar */
+/* Prevent unwanted horizontal scroll / whitespace */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure cart takes full width */
+.cart-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px; /* default padding */
+}
+
 .navbar-glass {
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
@@ -750,18 +764,109 @@
   text-align: center;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .cart-table-cart {
-    width: 90%;
+/* ===== Responsive Media Queries ===== */
+/* ===== Responsive Fixes for Cart Page ===== */
+@media (max-width: 1024px) {
+  .cart-container {
+    padding: 30px;
   }
 }
 
 @media (max-width: 768px) {
+  .cart-container {
+    padding: 20px;
+  }
+
   .cart-table-cart {
-    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .cart-table-cart img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cart-total {
+    font-size: 1.2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .cart-container {
+    padding: 15px;
+  }
+
+  .cart-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .cart-table-cart {
+    font-size: 0.8rem;
+  }
+
+  .cart-table-cart th,
+  .cart-table-cart td {
+    padding: 10px;
+  }
+
+  .btn-checkout {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container {
+    padding: 10px;
+  }
+}
+/* Responsive cart table wrapper */
+.cart-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+.cart-table-cart {
+  min-width: 600px; /* keeps structure without squishing */
+}
+
+/* On small screens make text + buttons smaller */
+@media (max-width: 576px) {
+  .cart-table-cart th,
+  .cart-table-cart td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .cart-table-cart img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quantity-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .btn-remove {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .btn-checkout {
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+}
+
 
 /* ===== Admin Page CSS ===== */
 

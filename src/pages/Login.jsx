@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/Login.css";
 
-
 function Login({ setIsLoggedIn, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,12 +15,22 @@ function Login({ setIsLoggedIn, setUser }) {
       const loggedInUser = { name: "User", role: "user", email: "user@example.com" };
       setUser(loggedInUser);
       setIsLoggedIn(true);
-      navigate("/Profile");
+
+      // ✅ Save login state
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+
+      navigate("/profile");
     } else if (username === "admin" && password === "admin123") {
       const loggedInUser = { name: "Admin", role: "admin" };
       setUser(loggedInUser);
       setIsLoggedIn(true);
-      navigate("/Admin");
+
+      // ✅ Save login state
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+
+      navigate("/admin");
     } else {
       setError("Invalid credentials!");
     }

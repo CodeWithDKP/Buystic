@@ -1,4 +1,5 @@
 // src/pages/Cart.jsx
+import '../App.css';
 
 import { useNavigate } from "react-router-dom";
 
@@ -49,54 +50,57 @@ function Cart({ isLoggedIn, cart, setCart, subtotal, taxes, shipping, discount, 
         <p className="cart-empty">No items in cart</p>
       ) : (
         <div className="table-responsive">
-          <table className="cart-table-cart table table-bordered align-middle">
-            <thead className="table-light">
-              <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((item) => (
-                <tr key={item.id}>
-                  <td>
-                    <img src={item.image} alt={item.title} className="me-2" />
-                    {item.title}
-                  </td>
-                  <td>₹{item.price.toFixed(2)}</td>
-                  <td>
-                    <div className="d-flex align-items-center gap-2 justify-content-center">
-                      <button
-                        className="quantity-btn btn-decrease"
-                        onClick={() => handleDecrease(item)}
-                      >
-                        –
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        className="quantity-btn btn-increase"
-                        onClick={() => handleIncrease(item)}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                  <td>₹{(item.price * item.quantity).toFixed(2)}</td>
-                  <td>
-                    <button
-                      className="btn-remove"
-                      onClick={() => handleRemove(item)}
-                    >
-                      Remove
-                    </button>
-                  </td>
+          <div className="cart-table-wrapper">
+            <table className="cart-table-cart table table-bordered align-middle">
+              <thead className="table-light">
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Subtotal</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {cart.map((item) => (
+                  <tr key={item.id}>
+                    <td>
+                      <img src={item.image} alt={item.title} className="me-2" />
+                      {item.title}
+                    </td>
+                    <td>₹{item.price.toFixed(2)}</td>
+                    <td>
+                      <div className="d-flex align-items-center gap-2 justify-content-center">
+                        <button
+                          className="quantity-btn btn-decrease"
+                          onClick={() => handleDecrease(item)}
+                        >
+                          –
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          className="quantity-btn btn-increase"
+                          onClick={() => handleIncrease(item)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td>₹{(item.price * item.quantity).toFixed(2)}</td>
+                    <td>
+                      <button
+                        className="btn-remove"
+                        onClick={() => handleRemove(item)}
+                      >
+                        Remove
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
 
           <hr />
           <div className="text-end">
