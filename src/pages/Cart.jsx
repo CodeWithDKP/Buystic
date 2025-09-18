@@ -37,9 +37,9 @@ function Cart({ isLoggedIn, cart, setCart, subtotal, taxes, shipping, discount, 
 
   const handleCheckout = () => {
     if (isLoggedIn) {
-      navigate("/Checkout");
+      navigate("/checkout");
     } else {
-      navigate("/Login");
+      navigate("/login");
     }
   };
 

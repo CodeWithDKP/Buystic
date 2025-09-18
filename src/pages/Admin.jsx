@@ -2,50 +2,48 @@
 
 import { useState, useEffect } from "react";
 import { getProducts } from "../service/api";
-import '../style/Loader.css';
+import "../style/Loader.css";
 
 function Admin() {
   const [allProducts, setAllProducts] = useState([]);
-  const [approved, setApproved] = useState([]);
+  const [removed, setRemoved] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [newPrice, setNewPrice] = useState("");
 
- 
- useEffect(() => {
-  getProducts().then((data) => {
-    setAllProducts(data);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getProducts();
+      setAllProducts(data);
 
-
-    let stored = JSON.parse(localStorage.getItem("approvedProducts"));
-
-    
-    if (!stored || stored.length === 0) {
-      localStorage.setItem("approvedProducts", JSON.stringify(data));
-      stored = data;
+      // Load removed list from localStorage
+      const stored = JSON.parse(localStorage.getItem("removedProducts")) || [];
+      setRemoved(stored);
     }
-
-    setApproved(stored);
-  });
-}, []);
-
-
+    fetchData();
+  }, []);
 
   // Approve / Remove product
   const handleToggle = (product) => {
     let updated;
-    if (approved.find((p) => p.id === product.id)) {
-      updated = approved.filter((p) => p.id !== product.id);
+    if (removed.find((p) => p.id === product.id)) {
+      // undo remove
+      updated = removed.filter((p) => p.id !== product.id);
     } else {
-      updated = [...approved, product];
+      updated = [...removed, product];
     }
-    setApproved(updated);
-    localStorage.setItem("approvedProducts", JSON.stringify(updated));
+    setRemoved(updated);
+    localStorage.setItem("removedProducts", JSON.stringify(updated));
   };
 
   // Delete product from list (local only for now)
   const handleDelete = (id) => {
     const updated = allProducts.filter((p) => p.id !== id);
     setAllProducts(updated);
+
+    // also clean from removed if present
+    const updatedRemoved = removed.filter((p) => p.id !== id);
+    setRemoved(updatedRemoved);
+    localStorage.setItem("removedProducts", JSON.stringify(updatedRemoved));
   };
 
   // Start editing
@@ -61,12 +59,12 @@ function Admin() {
     );
     setAllProducts(updated);
 
-    // also update approved list if product exists there
-    const updatedApproved = approved.map((p) =>
+    // also update removed list if product exists there
+    const updatedRemoved = removed.map((p) =>
       p.id === id ? { ...p, price: parseFloat(newPrice) } : p
     );
-    setApproved(updatedApproved);
-    localStorage.setItem("approvedProducts", JSON.stringify(updatedApproved));
+    setRemoved(updatedRemoved);
+    localStorage.setItem("removedProducts", JSON.stringify(updatedRemoved));
 
     setEditingId(null);
     setNewPrice("");
@@ -89,7 +87,7 @@ function Admin() {
           </thead>
           <tbody>
             {allProducts.map((product) => {
-              const isApproved = approved.find((p) => p.id === product.id);
+              const isRemoved = removed.find((p) => p.id === product.id);
               return (
                 <tr key={product.id}>
                   <td>{product.id}</td>
@@ -124,11 +122,12 @@ function Admin() {
                       </button>
                     )}
                     <button
-                      className={`btn btn-sm me-2 ${isApproved ? "btn-danger" : "btn-success"
-                        }`}
+                      className={`btn btn-sm me-2 ${
+                        isRemoved ? "btn-success" : "btn-danger"
+                      }`}
                       onClick={() => handleToggle(product)}
                     >
-                      {isApproved ? "Remove" : "Approve"}
+                      {isRemoved ? "Approve" : "Remove"}
                     </button>
                     <button
                       className="btn btn-outline-danger btn-sm delete"

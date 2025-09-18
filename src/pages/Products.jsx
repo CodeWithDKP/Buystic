@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import { getProducts } from "../service/api";
 
 function Products({ cart, setCart }) {
   const [products, setProducts] = useState([]);
@@ -12,9 +13,22 @@ function Products({ cart, setCart }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const approved = JSON.parse(localStorage.getItem("approvedProducts")) || [];
-    setProducts(approved);
-    setLoading(false);
+    async function fetchProducts() {
+      const all = await getProducts();
+
+      // get removed list from localStorage
+      const removed = JSON.parse(localStorage.getItem("removedProducts")) || [];
+
+      // filter out removed ones
+      const finalProducts = all.filter(
+        (p) => !removed.some((r) => r.id === p.id)
+      );
+
+      setProducts(finalProducts);
+      setLoading(false);
+    }
+
+    fetchProducts();
   }, []);
 
   if (loading) return <Loader />;
