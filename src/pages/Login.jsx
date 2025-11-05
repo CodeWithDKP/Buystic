@@ -16,7 +16,7 @@ function Login({ setIsLoggedIn, setUser }) {
       setUser(loggedInUser);
       setIsLoggedIn(true);
 
-      // ✅ Save login state
+      //  Save login state
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("user", JSON.stringify(loggedInUser));
 
@@ -26,7 +26,7 @@ function Login({ setIsLoggedIn, setUser }) {
       setUser(loggedInUser);
       setIsLoggedIn(true);
 
-      // ✅ Save login state
+      //  Save login state
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("user", JSON.stringify(loggedInUser));
 

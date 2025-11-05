@@ -1,7 +1,7 @@
 // src/api/api.jsx
 import axios from "axios";
 
-// 🟢 Base API (dummy products API)
+//  Base API (dummy products API)
 const API_BASE = "https://fakestoreapi.com";
 
 /**

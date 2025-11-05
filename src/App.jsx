@@ -14,7 +14,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout from "./pages/Checkout";
-import { getProducts } from "./service/api";   // ✅ import API
+import { getProducts } from "./service/api";   
 
 function App() {
   const savedLogin = localStorage.getItem("isLoggedIn") === "true";
@@ -29,10 +29,10 @@ function App() {
   const [user, setUser] = useState(savedUser);
   const [cart, setCart] = useState([]);
   const [orders, setOrders] = useState(savedOrders);
-  const [products, setProducts] = useState([]); // ✅ global products
+  const [products, setProducts] = useState([]); 
   const [loading, setLoading] = useState(true);
 
-  // ✅ Fetch products once
+  
   useEffect(() => {
     async function fetchAllProducts() {
       const all = await getProducts();
@@ -61,10 +61,10 @@ function App() {
       <Navbar cartCount={cart.length} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
 
       <Routes>
-        {/* ✅ pass products to Home */}
+        {/* pass products to Home */}
         <Route path="/" element={<Home products={products} loading={loading} />} />
 
-        {/* ✅ also pass products to Products */}
+        {/* also pass products to Products */}
         <Route path="/products" element={<Products products={products} cart={cart} setCart={setCart} />} />
 
         <Route

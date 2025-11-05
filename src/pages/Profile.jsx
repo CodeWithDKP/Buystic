@@ -1,4 +1,4 @@
-import profile from "../assets/profilepic.jpg";
+
 import { useNavigate } from "react-router-dom";
 import "../style/Profile.css";
 
@@ -12,7 +12,7 @@ function Profile({ currentUser, cart, orders }) {
     <div className="profile-container">
       <h2>Profile</h2>
       <div className="profile-card d-flex align-items-center">
-        <img src={profile} alt="Profile" />
+        <img src="" alt="Profile" />
         <div>
           <h5>{currentUser.name}</h5>
           <p className="text">{currentUser.email || "No email"}</p>

@@ -738,6 +738,8 @@ html, body {
   }
   .btn-back {
     padding: 8px 15px;
+    text-align: end;
+    margin-left: 0px;
   }
 }
 
