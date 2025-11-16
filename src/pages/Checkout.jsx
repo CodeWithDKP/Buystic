@@ -8,6 +8,7 @@ function Checkout({ cart, subtotal, taxes, shipping, discount, totalPrice, setCa
     city: "",
     zip: "",
     phone: "",
+   
   });
 
   const [errors, setErrors] = useState({});
@@ -44,13 +45,14 @@ function Checkout({ cart, subtotal, taxes, shipping, discount, totalPrice, setCa
       date: new Date().toISOString().split("T")[0],
       total: totalPrice,
       items: [...cart],
-      status: "Pending",
+      status: "pending",
       shippingAddress: form,
       paymentMethod,
     };
 
     setOrders((prev) => [...prev, newOrder]);
     setCart([]);
+   
     setForm({ name: "", address: "", city: "", zip: "", phone: "" });
     setSuccessMsg(" Order placed successfully!");
   };
@@ -107,7 +109,7 @@ function Checkout({ cart, subtotal, taxes, shipping, discount, totalPrice, setCa
         <p>Subtotal: ₹{subtotal.toFixed(2)}</p>
         <p>Taxes: ₹{taxes.toFixed(2)}</p>
         <p>Shipping: ₹{shipping.toFixed(2)}</p>
-        <p>Discount: -₹{discount.toFixed(2)}</p>
+        <p>Discount: ₹{discount.toFixed(2)}</p>
         <h3>Total: ₹{totalPrice.toFixed(2)}</h3>
       </section>
 

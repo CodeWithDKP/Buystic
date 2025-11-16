@@ -1,4 +1,4 @@
-// src/api/api.jsx
+
 import axios from "axios";
 
 //  Base API (dummy products API)
@@ -41,7 +41,7 @@ export const getProductById = async (id) => {
  */
 export const createOrder = async (orderData) => {
   try {
-    // later replace with your backend POST API
+    // later replace with our backend POST API
     const res = await axios.post(`${API_BASE}/orders`, orderData);
     return res.data;
   } catch (error) {

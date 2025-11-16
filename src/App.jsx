@@ -14,7 +14,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout from "./pages/Checkout";
-import { getProducts } from "./service/api";   
+import { getProducts } from "./service/api";
 
 function App() {
   const savedLogin = localStorage.getItem("isLoggedIn") === "true";
@@ -24,15 +24,15 @@ function App() {
   const savedOrders = localStorage.getItem("orders")
     ? JSON.parse(localStorage.getItem("orders"))
     : [];
-
+  //localStorage.clear("orders");
   const [isLoggedIn, setIsLoggedIn] = useState(savedLogin);
   const [user, setUser] = useState(savedUser);
   const [cart, setCart] = useState([]);
   const [orders, setOrders] = useState(savedOrders);
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  
+
   useEffect(() => {
     async function fetchAllProducts() {
       const all = await getProducts();
@@ -51,10 +51,14 @@ function App() {
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const taxRate = 0.1;
   const taxes = subtotal * taxRate;
-  const shipping = subtotal > 1000 ? 0 : 50;
+  // const shipping = subtotal > 1000 ? 0 : 50;
+  const shipping = cart.length === 0 ? 0 : subtotal > 1000 ? 0 : 50;
   const discountRate = 0.05;
   const discount = subtotal * discountRate;
-  const totalPrice = subtotal + taxes + shipping - discount;
+  const totalPriceRaw = subtotal + taxes + shipping - discount;
+  const totalPrice = Math.round(totalPriceRaw);
+  console.log("total price=" + totalPrice);
+
 
   return (
     <Router>

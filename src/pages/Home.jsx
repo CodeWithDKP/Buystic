@@ -33,7 +33,7 @@ function Home({ products }) {
                 <p>₹{product.price}</p>
               </div>
             ))}
-            {/* Duplicate set for infinite scroll */}
+            {/*  infinite scroll */}
             {mostSold.map((product, i) => (
               <div className="scroll-card" key={`dup-sold-${i}`}>
                 <img src={product.image} alt={product.title} className="product-img" />

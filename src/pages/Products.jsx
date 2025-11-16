@@ -9,6 +9,7 @@ function Products({ cart, setCart, products, setProducts }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const navigate = useNavigate();
+ 
 
   useEffect(() => {
     async function fetchProducts() {
@@ -64,7 +65,7 @@ function Products({ cart, setCart, products, setProducts }) {
       );
   };
 
-  // 🔹 Render single product details
+  //  Render single product details
   if (selectedProduct) {
     const inCart = cart.find((item) => item.id === selectedProduct.id);
     return (
@@ -104,7 +105,7 @@ function Products({ cart, setCart, products, setProducts }) {
     );
   }
 
-  // 🔹 Render products list
+  //  Render products list
   return (
     <div className="products-container">
       <div className="search-bar">

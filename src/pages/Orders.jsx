@@ -40,7 +40,7 @@ function Orders({ orders }) {
         </div>
       )}
 
-      {/* ✅ Order Details Modal */}
+      {/*  Order Details Modal */}
       {selectedOrder && (
         <div className="order-details-modal">
           <div className="order-details-card">
